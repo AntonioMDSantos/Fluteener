@@ -1,10 +1,16 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/constants.dart';
+import 'package:flutter_application_3/models/Product.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'components/categories.dart';
+import 'components/newArrival.dart';
+import 'components/popular.dart';
+import 'components/productCard.dart';
 import 'components/searchform.dart';
 import 'components/section.dart';
 
@@ -22,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           children: [],
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,15 +46,15 @@ class HomeScreen extends StatelessWidget {
             ),
             const Categories(),
             const SizedBox(height: defaultPadding),
-            SectionTitle(
-              title: "Novos Produtos",
-              pressSeeAll: () {},
-            ),
-            
+            const NewArrival(),
+            const SizedBox(height: defaultPadding),
+            const Popular(),
           ],
         ),
       ),
     );
   }
 }
+
+
 
