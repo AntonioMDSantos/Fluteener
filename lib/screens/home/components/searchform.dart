@@ -24,8 +24,8 @@ class SearchForm extends StatelessWidget {
               child: SvgPicture.asset("assets/icons/Search.svg"),
             ),
             suffixIcon: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: defaultPadding / 2),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
               child: SizedBox(
                 height: 48,
                 width: 48,

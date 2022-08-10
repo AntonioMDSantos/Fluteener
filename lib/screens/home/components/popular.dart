@@ -25,8 +25,7 @@ class Popular extends StatelessWidget {
               children: List.generate(
                   demo_product.length,
                   ((index) => Padding(
-                        padding:
-                            const EdgeInsets.only(left: defaultPadding),
+                        padding: const EdgeInsets.only(left: defaultPadding),
                         child: ProductCard(
                             image: demo_product[index].image,
                             title: demo_product[index].title,

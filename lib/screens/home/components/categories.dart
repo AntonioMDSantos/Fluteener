@@ -13,18 +13,16 @@ class Categories extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(
-          5,
-          (index) => Padding(
-            padding: const EdgeInsets.only(right: defaultPadding),
-            child: CardCategory(
-              icon: "assets/icons/Clothes.svg",
-              title: "Clothes",
-              press: () {},
-            ),
-          )
-        )
-        ),
+          children: List.generate(
+              5,
+              (index) => Padding(
+                    padding: const EdgeInsets.only(right: defaultPadding),
+                    child: CardCategory(
+                      icon: "assets/icons/Clothes.svg",
+                      title: "Clothes",
+                      press: () {},
+                    ),
+                  ))),
     );
   }
 }

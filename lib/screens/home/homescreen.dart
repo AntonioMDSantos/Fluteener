@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -24,9 +22,6 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Row(
-          children: [],
-        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(defaultPadding),
@@ -55,6 +50,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
