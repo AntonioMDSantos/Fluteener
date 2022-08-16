@@ -36,7 +36,7 @@ class NewArrival extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => DetailScreen(),
+                                    builder: (context) => DetailScreen(product: demo_product[index],),
                                   ));
                             }),
                       )))),
