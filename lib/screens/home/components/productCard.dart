@@ -9,7 +9,8 @@ class ProductCard extends StatelessWidget {
     required this.title,
     required this.bgColor,
     required this.price,
-    required this.press,
+    required this.press, 
+    required int id,
   }) : super(key: key);
 
   final String image, title;

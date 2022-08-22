@@ -27,6 +27,7 @@ class Popular extends StatelessWidget {
                   ((index) => Padding(
                         padding: const EdgeInsets.only(left: defaultPadding),
                         child: ProductCard(
+                            id: demo_product[index].id,
                             image: demo_product[index].image,
                             title: demo_product[index].title,
                             bgColor: demo_product[index].bgColor,

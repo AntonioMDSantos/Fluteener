@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/constants.dart';
 import 'package:flutter_application_3/models/Product.dart';
+import 'package:flutter_application_3/screens/shopcart/shopcart.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'components/categories.dart';
@@ -22,6 +23,21 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: SvgPicture.asset("assets/icons/menu.svg"),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShopCart(),
+                    ));
+              },
+              icon: SvgPicture.asset("assets/icons/carrinho.svg"))
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(defaultPadding),

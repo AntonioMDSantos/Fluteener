@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/constants.dart';
+import 'package:flutter_application_3/screens/shopcart/shopcart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../models/Product.dart';
+import 'package:like_button/like_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key, required this.product}) : super(key: key);
+  DetailScreen({Key? key, required this.product, required this.isLiked}) : super(key: key);
 
   final Product product;
+  final double size = 30;
+  bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +23,23 @@ class DetailScreen extends StatelessWidget {
         elevation: 0,
         leading: const BackButton(color: Colors.black),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: SvgPicture.asset(
-                "assets/icons/Heart.svg",
-                height: 20,
-              ),
-            ),
-          )
+          LikeButton(
+            size: size,
+            isLiked: isLiked,
+            likeBuilder: (isLiked) {
+              final color = isLiked ? Colors.red : Colors.grey;
+              return Icon(
+                Icons.favorite,
+                color: color,
+                size: size,
+              );
+            },
+            onTap: (isLiked) async {
+              SharedPreferences pef = await SharedPreferences.getInstance();
+              await pef.setBool("isLiked_${product.id}", !isLiked);
+              return !isLiked;
+            },
+          ),
         ],
       ),
       body: Column(children: [
@@ -65,8 +78,11 @@ class DetailScreen extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: defaultPadding),
+              ),
+              Expanded(
                 child: Text(
-                    "Uma camisa henley é uma camisa de pulôver sem gola, com um decote redondo e uma carcela de cerca de 8 a 13 cm de comprimento e geralmente com 2-5 botões"),
+                  product.description,
+                ),
               ),
               const Text(
                 "Colors",
@@ -94,15 +110,26 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: defaultPadding * 1.5,),
+              const SizedBox(
+                height: defaultPadding * 1.5,
+              ),
               Center(
                 child: SizedBox(
                   width: 200,
                   height: 48,
-                  child: ElevatedButton(onPressed: () {},
-                  style: ElevatedButton.styleFrom(primary: primaryColor,
-                  shape: const StadiumBorder()),
-                   child: const Text("Adicionar no carrinho")),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Fluttertoast.showToast(
+                          msg: "Voce adicionou ${product.title} no carrinho",
+                          backgroundColor: Colors.blue,
+                          toastLength: Toast.LENGTH_SHORT,
+                          fontSize: 16,
+                          gravity: ToastGravity.TOP,
+                          );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          primary: primaryColor, shape: const StadiumBorder()),
+                      child: const Text("Adicionar no carrinho")),
                 ),
               )
             ]),
