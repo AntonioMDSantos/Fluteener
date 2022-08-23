@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/constants.dart';
-import 'package:flutter_application_3/models/Product.dart';
+import 'package:flutter_application_3/models/ProductNew.dart';
 import 'package:flutter_application_3/screens/shopcart/shopcart.dart';
 import 'package:flutter_svg/svg.dart';
 

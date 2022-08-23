@@ -3,7 +3,7 @@ import 'package:flutter_application_3/screens/details/details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
-import '../../../models/Product.dart';
+import '../../../models/ProductNew.dart';
 import 'productCard.dart';
 import 'section.dart';
 

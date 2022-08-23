@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/constants.dart';
 import 'package:flutter_application_3/screens/shopcart/shopcart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../models/ProductNew.dart';
+import '../../models/ProductPopular.dart';
 import 'package:like_button/like_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class DetailScreen extends StatelessWidget {
-  DetailScreen({Key? key, required this.product, required this.isLiked}) : super(key: key);
+class DetailScreenPopular extends StatelessWidget {
+  DetailScreenPopular({Key? key, required this.product, required this.isLiked}) : super(key: key);
 
   final Product product;
   final double size = 30;
