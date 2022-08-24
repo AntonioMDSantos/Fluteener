@@ -8,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class DetailScreenPopular extends StatelessWidget {
-  DetailScreenPopular({Key? key, required this.product, required this.isLiked}) : super(key: key);
+  DetailScreenPopular({Key? key, required this.product, required this.isLiked})
+      : super(key: key);
 
   final Product product;
   final double size = 30;
@@ -23,6 +24,15 @@ class DetailScreenPopular extends StatelessWidget {
         elevation: 0,
         leading: const BackButton(color: Colors.black),
         actions: [
+          IconButton(
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShopCart(),
+                    ));
+              },
+              icon: SvgPicture.asset("assets/icons/carrinho.svg")),
           LikeButton(
             size: size,
             isLiked: isLiked,
@@ -125,7 +135,7 @@ class DetailScreenPopular extends StatelessWidget {
                           toastLength: Toast.LENGTH_SHORT,
                           fontSize: 16,
                           gravity: ToastGravity.TOP,
-                          );
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                           primary: primaryColor, shape: const StadiumBorder()),

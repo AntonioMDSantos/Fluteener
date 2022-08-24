@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/constants.dart';
+import 'package:flutter_application_3/controller/cartController.dart';
 import 'package:flutter_application_3/screens/shopcart/shopcart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import '../../models/ProductNew.dart';
 import 'package:like_button/like_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../../../controller/cartController.dart';
 
 class DetailScreen extends StatelessWidget {
-  DetailScreen({Key? key, required this.product, required this.isLiked}) : super(key: key);
+    final cartController = Get.put(CartController());
+  DetailScreen({Key? key, required this.product, required this.isLiked, required this.index})
+      : super(key: key);
 
   final Product product;
   final double size = 30;
   bool isLiked = false;
+  final int index;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +30,15 @@ class DetailScreen extends StatelessWidget {
         elevation: 0,
         leading: const BackButton(color: Colors.black),
         actions: [
+          IconButton(
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ShopCart(),
+                    ));
+              },
+              icon: SvgPicture.asset("assets/icons/carrinho.svg")),
           LikeButton(
             size: size,
             isLiked: isLiked,
@@ -119,13 +135,15 @@ class DetailScreen extends StatelessWidget {
                   height: 48,
                   child: ElevatedButton(
                       onPressed: () {
+                        cartController
+                                  .addProduct(Product.products[index]);
                         Fluttertoast.showToast(
                           msg: "Voce adicionou ${product.title} no carrinho",
                           backgroundColor: Colors.blue,
                           toastLength: Toast.LENGTH_SHORT,
                           fontSize: 16,
                           gravity: ToastGravity.TOP,
-                          );
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                           primary: primaryColor, shape: const StadiumBorder()),

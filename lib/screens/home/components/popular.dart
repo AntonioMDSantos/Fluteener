@@ -26,22 +26,22 @@ class Popular extends StatelessWidget {
           child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(
-                  demo_product.length,
+                  Product.productsPopular.length,
                   ((index) => Padding(
                         padding: const EdgeInsets.only(left: defaultPadding),
                         child: ProductCard(
-                            id: demo_product[index].id,
-                            image: demo_product[index].image,
-                            title: demo_product[index].title,
-                            bgColor: demo_product[index].bgColor,
-                            price: demo_product[index].price,
+                            id: Product.productsPopular[index].id,
+                            image: Product.productsPopular[index].image,
+                            title: Product.productsPopular[index].title,
+                            bgColor: Product.productsPopular[index].bgColor,
+                            price: Product.productsPopular[index].price,
                              press: () async {
                               SharedPreferences pef = await SharedPreferences.getInstance();
-                              bool isLiked = pef.getBool("isLiked_${demo_product[index].id}") ?? false;
+                              bool isLiked = pef.getBool("isLiked_${Product.productsPopular[index].id}") ?? false;
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => DetailScreenPopular(product: demo_product[index], isLiked: isLiked,),
+                                    builder: (context) => DetailScreenPopular(product: Product.productsPopular[index], isLiked: isLiked,),
                                   ));
                             }),
                       )))),
