@@ -26,26 +26,26 @@ class NewArrival extends StatelessWidget {
           child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(
-                  Product.products.length,
+                  products.length,
                   ((index) => Padding(
                         padding: const EdgeInsets.only(left: defaultPadding),
                         child: ProductCard(
-                            id: Product.products[index].id,
-                            image: Product.products[index].image,
-                            title: Product.products[index].title,
-                            bgColor: Product.products[index].bgColor,
-                            price: Product.products[index].price,
+                            id: products[index].id,
+                            image: products[index].image,
+                            title: products[index].title,
+                            bgColor: products[index].bgColor,
+                            price: products[index].price,
                             press: () async { 
                               SharedPreferences pef =
                                   await SharedPreferences.getInstance();
                               bool isLiked = pef.getBool(
-                                      "isLiked_${Product.products[index].id}") ??
+                                      "isLiked_${products[index].id}") ??
                                   false;
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => DetailScreen(
-                                      product: Product.products[index],
+                                      product: products[index],
                                       isLiked: isLiked, index: index,
                                     ),
                                   ));

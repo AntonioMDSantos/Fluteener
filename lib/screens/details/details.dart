@@ -136,7 +136,7 @@ class DetailScreen extends StatelessWidget {
                   child: ElevatedButton(
                       onPressed: () {
                         cartController
-                                  .addProduct(Product.products[index]);
+                                  .addProduct(products[index]);
                         Fluttertoast.showToast(
                           msg: "Voce adicionou ${product.title} no carrinho",
                           backgroundColor: Colors.blue,

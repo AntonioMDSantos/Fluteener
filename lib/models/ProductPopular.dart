@@ -5,7 +5,7 @@ class Product {
   final int price, id;
   final Color bgColor;
 
-  const Product({
+Product({
     required this.id,
     required this.image,
     required this.description,
@@ -13,9 +13,10 @@ class Product {
     required this.price,
     this.bgColor = const Color(0xFFEFEFF2),
   });
+}
 
 
-static const List<Product> productsPopular = [
+List<Product> productsPopular = [
   Product(
     id: 5,
     image: "assets/images/bermuda1.png",
@@ -50,4 +51,3 @@ static const List<Product> productsPopular = [
       price: 149,
       bgColor: const Color(0xFFEEEEED))
 ];
-}

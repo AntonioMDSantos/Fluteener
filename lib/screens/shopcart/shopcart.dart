@@ -16,9 +16,13 @@ class _ShopCartState extends State<ShopCart> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text("Your Cart"),
           elevation: 0,
           leading: const BackButton(color: Colors.black),
+          title: Column(children: [
+          Text("Your Cart",
+          style: TextStyle(color: Colors.black),
+          ),
+          ]),
         ),
         body: Column(
           children: [
